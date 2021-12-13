@@ -1,0 +1,45 @@
+<body> 
+	  		<th:block layout:fragment="header" th:include="@{header}"></th:block> 
+	  		
+	  		<div layout:fragment="content" class="content"> 
+	  			<h2>This is Content</h2> 
+	  			<hr> 
+	  			<!-- 아래의 코드를 추가 합니다.--> 
+	  			<table border="1"> 
+	  				<tr> 
+	  					<th>TEXT</th> 
+	  				</tr> 
+	  			</table> 
+	  			<div style="text-align: center;">
+	  				<input type="text" id="sendInput">
+	  				<button id="sendBtn">메시지 전송</button>
+	  			</div>
+	  		</div> 
+	  		<th:block layout:fragment="footer" th:include="@{footer}"></th:block> 
+	  	</body> 
+	  	//[{}] 표현식으로 서버 데이터를 스크립트영역에 표현할 수 있음 예시 json 형식
+	  	//jquery 적용 하는 방법은 직접 다운로드하는 방식과 CDN으로 URL을 넣어서 적용시키는 방법이 있다
+	  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  	<script th:inline="javascript">
+		  	//click = 속성 같은 거임
+		  	$("#sendBtn").on('click', function() {
+				message = $("#sendInput").val(); //message
+				
+				data = {
+					message : message
+				}
+				
+				$.ajax({
+					type:'GET',
+					url:'/sendMessage/producer',
+					contentType:'application/json',
+					data: data,
+					success: function(data){
+						
+					},
+					error:function(){
+						
+					}
+				})
+	 		})
+	  	</script>
