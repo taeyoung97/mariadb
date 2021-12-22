@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:th="http://www.thymeleaf.org" 
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-	  layout:decorate="~{layout/default_layout}"> 
+	  layout:decorate="~{layout/default_layout}">
 	 
 	  <th:block layout:fragment="head">
 	  	
@@ -43,8 +43,7 @@
 	  </head> 
 	  <body class="text-center"> 
 		  	<main class="form-signin">
-				    
-			  <form>
+			 <form>
 			    <img class="mb-4" src="https://getbootstrap.kr/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
 			    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 			
@@ -64,8 +63,9 @@
 			    </div>
 			    <button class="btn btn-primary" type="submit" style="margin-top: 5px;background-color:black" id="confirmBtn">데이터베이스 생성</button>
 			    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 5px; background-color:red" id="updateBtn" >정보 갱신</button>
-			    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 5px; background-color:blue" onclick="newPage()">url</button>
-
+			    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 5px; background-color:blue">url</button>
+				
+				<a href="/practice">practice 이동 </a>
 			    <p></p>
 			    <div layout:fragment="content" class="content"> 
 		  			<table border="1"> 
@@ -82,6 +82,8 @@
 		  			
 		  		</div>
 			  </form>
+			  <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 5px; background-color:blue" id="practiceBtn">url</button>
+
 			</main>
 	  	</body > 
 	  	<!--[{}] 표현식으로 서버 데이터를 스크립트영역에 표현할 수 있음 예시 json 형식-->
@@ -153,12 +155,17 @@
 					}
 				})
 	 		})
-	 		
-	 		function newPage()  {
-				location.reload();
-				window.location.href='https://naver.com';
-			  //windows.replace('https://www.naver.com');
-			  console.log('클릭클릭');
-			}
+	 		/*$("#practiceBtn").on('click', function() {
+				console.log("test");
+				//window.location.href = "http://localhost:8080/practice"
+				window.location.replace("http://localhost:8080/practice");
+	 		});*/
+	 		$("#practiceBtn").click(function(){
+				var url = "/practice";
+				$(location).attr('href',url);
+				
+				
+	 		});
+
 	  	</script>
 </html>
